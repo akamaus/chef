@@ -97,7 +97,7 @@ class Chef
       alias :revision_slug :revision_int
       
       def find_current_revision
-        return nil unless ::File.exist?(@new_resource.destination)
+        return nil unless ::File.exist?(@new_resource.destination + "/.svn")
         command = scm(:info)
         status, svn_info, error_message = output_of_command(command, run_options(:cwd => cwd))
         
